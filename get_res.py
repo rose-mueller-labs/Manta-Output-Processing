@@ -1,0 +1,3 @@
+# use illumina's nirvana tool or annotsv
+
+# https://www.reddit.com/r/bioinformatics/comments/13pn0t9/what_to_do_with_manta_outputs/
