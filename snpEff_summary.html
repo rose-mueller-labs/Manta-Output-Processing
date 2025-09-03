@@ -1,0 +1,4347 @@
+
+<!--==========================================================================
+	FTL macros 
+	========================================================================== -->
+
+
+<!--==========================================================================
+	CSS styles 
+	========================================================================== -->
+
+
+<style type="text/css">
+
+body {
+	background-color: #dddddd;
+}
+
+/* Table styles. */
+
+table {
+  border-color: #000;
+  border-spacing: 0px;
+  border-style: solid;
+  border-width: 1px;
+  cell-spacing: 0px;
+}
+
+.noBorder {
+  border-width: 0px;
+}
+
+td, th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  padding: 2px 0.5em;
+  white-space: nowrap;
+}
+
+td.numeric {
+  text-align: right;
+}
+
+th {
+  background-color: #c0c0c0;
+}
+
+th.mainHeader {
+  background-color: #808080;
+  color: #ffffff;
+  text-align: left;
+}
+
+th a {
+  color: #000080;
+  text-decoration: none;
+}
+
+th a:visited {
+  color: #000080;
+}
+
+th a:active, th a:hover {
+  color: #800000;
+  text-decoration: underline;
+}
+
+.toc {
+	border: 1px solid #aaa;
+	background-color: #eeeeee;
+	padding: 5px;
+	font-size: 95%;
+}
+
+.note {
+	border: 1px solid #aaa;
+	background-color: #eeeeee;
+	padding: 5px;
+	font-size: 90%;
+	text-align: left;
+}
+
+.main {
+	margin-top: 15px;
+	width: 1000px;
+	text-align: left;
+	background: #ffffff;
+	border: 3px solid #777777;
+}
+
+.histo {
+	table-layout:fixed;
+	width:100%;
+	border:1px solid #aaa;
+	word-wrap:break-word;
+}
+
+</style>
+
+
+<!--==========================================================================
+	Index
+	========================================================================== -->
+
+<center>
+<div class="main">
+
+<center> <h3> SnpEff: Variant analysis </h3> </center>
+
+<div style="margin-left: .5em">
+<table class="toc"><tr><td>
+	<center><b>Contents</b></center>
+	<a href="#summary">Summary</a><br>
+	<a href="#changeRateChr"> Variant rate by chromosome</a><br>
+	<a href="#changesByType">Variants by type</a><br>
+	<a href="#effectsImpact"> Number of variants by impact </a><br>
+	<a href="#effectsImpact"> Number of variants by functional class </a><br>
+	<a href="#effects"> Number of variants by annotation </a><br>
+	<a href="#quality">Quality histogram</a><br>
+	<a href="#indels">InDel length histogram</a><br>
+	<a href="#baseChages">Base variant table</a><br>
+	<a href="#tstv">Transition vs transversions (ts/tv)</a><br>
+	<a href="#alleleFreq"> Allele frequency </a><br>
+	<a href="#alleleCount"> Allele Count </a><br>
+	<a href="#codonChanges"> Codon change table </a><br>
+	<a href="#aaChanges"> Amino acid change table </a><br>
+	<a href="#chrChanges"> Chromosome variants plots </a><br>
+	<a href="snpEff_genes.txt"> Details by gene </a><br>
+</tr></td></table>
+</div>
+
+
+<!--==========================================================================
+	Summary table 
+	========================================================================== -->
+
+<hr>
+<a name="summary">
+<center>
+<b>Summary</b><p>
+
+<table border=0>
+	<tr bgcolor=ffffff> 
+		<td valign=top> <b> Genome </b> </td>
+		<td> Drosophila_melanogaster </td>
+	</tr>
+	<tr bgcolor=dddddd> 
+		<td valign=top> <b> Date </b> </td>
+		<td> 2025-09-02 22:26 </td>
+	</tr>
+	<tr bgcolor=ffffff> 
+		<td valign=top> <b> SnpEff version </b> </td>
+		<td> <pre>SnpEff 5.3a (build 2025-09-02 10:24), by Pablo Cingolani</pre> </td>
+	</tr>
+	<tr bgcolor=dddddd> 
+		<td valign=top> <b> Command line arguments </b> </td>
+		<td> <pre>SnpEff  Drosophila_melanogaster /Users/shreyanakum/Downloads/Manta-Output-Processing/MantaTestOutput/output/results/variants/candidateSmallIndels.vcf 
+</pre> </td>
+	</tr>
+	<tr bgcolor=ffffff> 
+		<td valign=top> <b> Warnings </b> </td>
+		 
+		<td bgcolor="#ffffff"> 0 </td>
+	</tr>	
+	<tr bgcolor=dddddd> 
+		<td valign=top> <b> Errors </b> </td>
+		   
+		<td bgcolor="#ff0000"> 67,764 </td>
+	</tr>	
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of lines (input file) </b> </td>
+		<td> 67,764 </td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Number of variants (before filter) </b> </td>
+		<td> 67,764 </td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of non-variants <br>(i.e. reference equals alternative) </b> </td>
+		<td> 0 </td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Number of variants processed <br> (i.e. after filter and non-variants) </b> </td>
+		<td> 67,764 </td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of known variants <br>(i.e. non-empty ID) </b> </td>
+		<td> 
+		67,764
+		( 100% ) 
+		</td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Number of multi-allelic VCF entries <br>(i.e. more than two alleles) </b> </td>
+		<td> 
+		0
+		</td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of annotations </b> </td>
+		<td> 67,764 </td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Genome total length </b> </td>
+		<td> 143,726,313 </td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Genome effective length </b> </td>
+		<td> 311 </td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Variant rate </b> </td>
+		<td> 1 variant every 0 bases </td>
+	</tr>
+</table>
+<p>
+</center>
+
+<!--==========================================================================
+	Variant rate by chromosome
+	========================================================================== -->
+
+<hr> 
+<a name="changeRateChr"> 
+
+<center>
+<b> Variants rate details </b><p>
+
+<table border=1>
+	<tr><th> Chromosome </th><th> Length </th><th> Variants </th><th> Variants rate </th></tr> 
+		<tr>
+			<td> AE013599.5 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> AE014134.6 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> AE014135.4 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> AE014296.5 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> AE014297.3 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> AE014298.5 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007074.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007075.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007077.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007078.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007079.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007081.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007084.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007085.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007086.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007087.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007089.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007091.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007103.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007104.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007106.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007108.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007111.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> CP007120.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483562.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483629.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483641.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483646.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483648.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483655.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483659.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483660.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483670.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483675.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483677.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483681.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483711.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483724.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483736.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483746.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483749.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483751.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483753.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483758.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483770.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483773.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483776.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483781.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483783.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483784.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483789.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483803.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483808.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483809.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483817.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483818.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483819.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483833.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483843.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483845.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483851.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483853.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483854.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483866.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483870.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483880.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483885.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483892.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483893.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483897.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483903.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483905.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483906.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483907.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483908.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483918.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483920.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483927.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483928.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483940.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483944.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483951.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483954.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483956.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483961.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483970.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483971.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483974.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483982.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS483992.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484000.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484002.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484004.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484022.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484039.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484041.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484042.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484046.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484051.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484057.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484058.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484060.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484061.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484064.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484068.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484069.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484070.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484084.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484089.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484099.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484102.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484116.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484124.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484125.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484130.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484131.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484138.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484140.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484143.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484148.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484153.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484159.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484178.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484180.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484185.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484187.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484197.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484198.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484202.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484203.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484216.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484219.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484225.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484235.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484244.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484246.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484258.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484260.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484263.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484268.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484272.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484276.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484277.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484278.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484279.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484280.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484281.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484282.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484285.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484289.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484296.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484297.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484300.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484316.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484319.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484322.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484330.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484343.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484345.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484346.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484348.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484354.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484358.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484361.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484367.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484369.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484371.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484377.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484382.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484383.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484387.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484388.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484393.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484394.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484396.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484417.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484419.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484429.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484431.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484447.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484450.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484454.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484462.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484469.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484472.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484486.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484507.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484526.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484528.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484533.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484552.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484556.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484563.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484566.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484568.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484578.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484588.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484593.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484594.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484600.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484601.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484608.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484609.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484610.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484611.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484614.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484632.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484644.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484646.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484672.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484673.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484697.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484702.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484718.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484719.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484722.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484724.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484725.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484737.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484739.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484748.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484751.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484765.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484768.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484777.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484779.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484787.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484789.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484803.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484817.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484857.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484869.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484904.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484907.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484913.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484948.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484963.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484970.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484978.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484982.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS484990.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485010.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485015.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485017.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485025.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485031.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485044.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485050.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485054.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485056.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485064.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485077.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485119.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485141.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485148.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485172.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485176.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485255.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485260.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485262.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485266.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485268.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485278.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485281.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485299.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485303.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485310.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485331.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485345.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485360.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485371.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485384.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485411.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485422.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485454.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485464.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485465.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485476.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485504.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485509.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485528.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485535.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485543.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485549.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485592.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485597.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485606.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485647.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485651.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485656.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485664.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485703.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485707.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485753.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485757.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485771.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485773.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485775.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485801.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485876.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485879.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485887.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485933.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485940.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485941.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485952.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485962.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485968.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS485981.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> DS486004.1 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+		<tr>
+			<td> KJ947872.2 </td>
+			<td class="numeric"> 1 </td>
+			<td class="numeric"> 0 </td>
+			<td class="numeric"> 0 </td>
+		</tr> 
+	<tr>
+		<th> Total </th>
+		<th class="numeric"> 311 </th>
+		<th class="numeric"> 67,764 </th>
+		<th class="numeric"> 0 </th>
+	</tr> 
+</table> 
+</center>
+
+<!--==========================================================================
+	Variants by type
+	========================================================================== -->
+
+<hr> 
+<a name="changesByType"> 
+<center>
+<b> Number variants by type</b><p>
+
+<table border=1>
+	<thead>
+		<tr>
+			<th> <b> Type   </b> </th>
+			<th> <b> Total  </b> </th>
+		</tr>
+	</thead>
+    <tbody>
+	    <tr>
+	    	<td> <b> SNP </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> MNP </b> </td>
+	    	<td class="numeric" bgcolor="#00ff00"> 259 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> INS </b> </td>
+	    	<td class="numeric" bgcolor="#c13d00"> 19,041 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> DEL </b> </td>
+	    	<td class="numeric" bgcolor="#ff0000"> 25,070 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> MIXED </b> </td>
+	    	<td class="numeric" bgcolor="#ed1100"> 23,394 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> INV </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> DUP </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> CNV </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> BND </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> INTERVAL </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+    </tbody>
+    <tfoot>
+	    <tr>
+	    	<th><b>Total </b> </th>
+	    	<th class="numeric"> 67,764 </th>
+	    </tr>
+    </tfoot>
+</table>
+</center>
+
+<!--==========================================================================
+	Effects by impact
+	========================================================================== -->
+
+<hr> 
+<a name="effectsImpact"> 
+<center>
+<b> Number of effects by impact </b> <p> 
+
+<table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+</table><br>
+<p>
+</center>
+
+<!--==========================================================================
+	Effects by functional class
+	========================================================================== -->
+
+<hr> 
+<a name="effectsFuncClass"> 
+<center>
+<b> Number of effects by functional class </b> <p> 
+
+<table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+</table><br>
+<p>
+
+Missense / Silent ratio: 0
+
+</center>
+
+<!--==========================================================================
+	Effects stats
+	========================================================================== -->
+
+<hr> 
+<a name="effects"> 
+<center>
+<b> Number of annotaitons and region counts </b> <p> 
+
+<table border=0>
+	<tr>
+		<th> Annotation </th>
+		<th> Region </th>
+	</tr>
+	<tr>
+		<td> <table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+</table><br>
+ </td>
+		<td> <table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+</table><br>
+ </td>
+	</tr>
+</table>
+<p>
+
+<img src="http://chart.apis.google.com/chart?cht=bvs&chbh=50,4,8&chs=800x300&chxt=y,y,x,x&chtt=Variations&chxp=1,50.0|3,50.0&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chco=00FFFF,FA8072,FF0000,A52A2A,FFA500,DEB887,E9967A,7FFFD4,808080&chdl=Upstream|5%27UTR|Exon|Splice+Donor|Intron|Splice+Acceptor|3%27UTR|Downstream|Intergenic&chxl=1:|%25|2:|Intergenic|Up|5%27UTR|Exon|Donor|Intron|Acceptor|Exon|3%27UTR|Down|Intergenic|3:|&chd=e:AA__AAAAAAAAAAAAAAAAAA,AAAA__AAAAAAAAAAAAAAAA,AAAAAA__AAAAAA__AAAAAA,AAAAAAAA__AAAAAAAAAAAA,AAAAAAAAAA__AAAAAAAAAA,AAAAAAAAAAAA__AAAAAAAA,AAAAAAAAAAAAAAAA__AAAA,AAAAAAAAAAAAAAAAAA__AA,__AAAAAAAAAAAAAAAAAA__" border=1><p>
+
+</center>
+
+<!--==========================================================================
+	Quality
+	========================================================================== -->
+
+<hr> 
+<a name="quality"> 
+<b> Quality:</b> 
+<p>
+<pre>
+	<img src="http://chart.apis.google.com/chart?chd=e:&cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Quality+histogram&chxl=1:|Count|3:|Quality&chxr=0,2.147483647E9,-2.147483648E9|1,0.0,100.0|3,0.0,100.0"><br>
+</pre>
+
+<!--==========================================================================
+	InDels
+	========================================================================== -->
+
+<hr> 
+<a name="indels"> 
+<b> Insertions and deletions length:</b> 
+<p>
+<pre>
+	<table class="histo">
+		<tr> <th width=15%>Min</th><td>1</td> </tr>
+		<tr> <th>Max</th><td>48</td> </tr>
+		<tr> <th>Mean</th><td>6.59</td> </tr>
+		<tr> <th>Median</th><td>1</td> </tr>
+		<tr> <th>Standard deviation</th><td>8.258</td> </tr>
+		<tr> <th>Values</th><td>1,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48</td> </tr>
+		<tr> <th>Count</th><td>25070,2866,2140,1877,1407,1979,939,998,811,759,434,656,354,368,346,282,245,283,239,160,171,196,140,136,129,128,117,108,118,97,66,75,75,46,63,33,31,30,41,19,31,28,20</td> </tr>
+		</tr>
+	</table>
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chg=4.0,2505.0,3,2&chxp=1,50.0|3,50.0&chtt=Insertion+deletion+length+histogram&chxr=0,19.0,25070.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Count|2:|1||||||||||16||||||||||26||||||||||36||||||||||46||48|3:|Length&chd=e:..HCFIEfDNEfB7B7B7BSApBSApApApApAAApAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"><br>
+</pre>
+
+<!--==========================================================================
+	Base changes
+	========================================================================== -->
+
+<hr> 
+<a name="baseChages"> 
+<center>
+<b> Base changes (SNPs) </b> <p>
+
+<table border=1>
+    <tr>
+    	<td> &nbsp; </td>  <th> <b> A </b> </th> <th> <b> C </b> </th> <th> <b> G </b> </th> <th> <b> T </b> </th>
+    </tr>
+	    <tr> <th> <b> A </b> </th><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td> </tr>
+	    <tr> <th> <b> C </b> </th><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td> </tr>
+	    <tr> <th> <b> G </b> </th><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td> </tr>
+	    <tr> <th> <b> T </b> </th><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="ffffff"> 0 </td> </tr>
+</table>
+</center>
+
+<p>
+
+<!--==========================================================================
+	Ts/Tv
+	========================================================================== -->
+
+<hr> 
+<a name="tstv">
+<center> <b> Ts/Tv (transitions / transversions) </b> <p> </center>
+
+<small>
+<b>Note:</b> Only SNPs are used for this statistic.<br>
+<b>Note:</b> This Ts/Tv ratio is a 'raw' ratio (ratio of observed events).
+</small>
+<p>
+
+<center>
+<table border=1>
+	<tr> <th> Transitions </th><td class="numeric"> 0 </td> </tr>
+	<tr> <th> Transversions </th><td class="numeric"> 0 </td> </tr>
+	<tr> <th> Ts/Tv ratio </th><td class="numeric"> 0 </td> </tr>
+</table>
+</center>
+<p>
+
+	<b>All variants:</b>
+	<pre>No results available (empty input?)</pre>
+	<p>
+	<b>Only known variants</b> (i.e. the ones having a non-empty ID field):
+	<pre>No results available (empty input?)</pre>
+<p>
+
+<!--==========================================================================
+	Allele frequency
+	========================================================================== -->
+
+<hr> 
+<a name="alleleFreq">
+<center> <b> Allele frequency </b> <p> </center>
+
+	<img src="http://chart.apis.google.com/chart?chd=e:&cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Allele+Frequency+%25&chxl=1:|Count|3:|Alleles+frequency&chxr=0,2.147483647E9,-2.147483648E9|1,0.0,100.0|3,0.0,100.0"><br>
+<p>
+	
+<!--==========================================================================
+	Allele Count
+	========================================================================== -->
+
+<hr> 
+<a name="alleleCount">
+<center> <b> Allele Count </b> <p> </center>
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chd=e:..&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chtt=Allele+Count&chxp=1,50.0|3,50.0&chxl=1:|Count|2:|1|3:|Allele+Count&chxr=0,0.0,67764.0|1,0.0,100.0|3,0.0,100.0"><br>
+	<table class="histo">
+		<tr> <th width=15%>Min</th><td>1</td> </tr>
+		<tr> <th>Max</th><td>1</td> </tr>
+		<tr> <th>Mean</th><td>1</td> </tr>
+		<tr> <th>Median</th><td>1</td> </tr>
+		<tr> <th>Standard deviation</th><td>0</td> </tr>
+		<tr> <th>Values</th><td>1</td> </tr>
+		<tr> <th>Count</th><td>67764</td> </tr>
+		</tr>
+	</table>
+<p>
+
+
+<!--==========================================================================
+	Hom/Het table
+	========================================================================== -->
+
+<hr> 
+<a name="homHet">
+<center> <b> Hom/Het per sample </b> <p> </center>
+	<img src="http://chart.apis.google.com/chart?chd=e:&cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Heterozygous+genotypes&chxl=1:|Heterozygous+count|3:|Sample+number&chxr=0,2.147483647E9,-2.147483648E9|1,0.0,100.0|3,0.0,100.0"><br>
+	<img src="http://chart.apis.google.com/chart?chd=e:&cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Homozygous+%28ALT%29+genotypes&chxl=1:|Homozygous+count|3:|Sample+number&chxr=0,2.147483647E9,-2.147483648E9|1,0.0,100.0|3,0.0,100.0"><br>
+	<img src="http://chart.apis.google.com/chart?chd=e:&cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Missing+genotypes&chxl=1:|Missing+count|3:|Sample+number&chxr=0,2.147483647E9,-2.147483648E9|1,0.0,100.0|3,0.0,100.0"><br>
+	
+	<pre>Sample_names 
+Reference 
+Het 
+Hom 
+Missing 
+</pre>
+<p>
+
+<!--==========================================================================
+	Codon change table
+	========================================================================== -->
+	
+<hr> 
+<a name="codonChanges">
+<center>
+<b> Codon changes</b> <p>
+
+	<div class="note">
+		How to read this table: <br>
+		- Rows are reference codons and columns are changed codons. E.g. Row 'AAA' column 'TAA' indicates how many 'AAA' codons have been replaced by 'TAA' codons.<br>
+		- Red background colors indicate that more changes happened (heat-map).<br>
+		- Diagonals are indicated using grey background color <br> 
+		- WARNING: This table may include different translation codon tables (e.g. mamalian DNA and mitochondrial DNA).<br>
+		<p>
+	</div><p>
+
+  
+<table border=1>
+	<thead>
+		<tr> 
+			<th> &nbsp; </th>
+			
+		</tr>
+	</thead>
+</table>
+</center>
+
+<!--==========================================================================
+	Amino acid change table
+	========================================================================== -->
+
+<hr> 
+<a name="aaChanges">
+<center>
+<b> Amino acid changes</b><p> 
+
+	<div class="note">
+		How to read this table: <br>
+		- Rows are reference amino acids and columns are changed amino acids. E.g. Row 'A' column 'E' indicates how many 'A' amino acids have been replaced by 'E' amino acids.<br>
+		- Red background colors indicate that more changes happened (heat-map).<br>
+		- Diagonals are indicated using grey background color <br> 
+		- WARNING: This table may include different translation codon tables (e.g. mamalian DNA and mitochondrial DNA).<br>
+		<p>
+	</div><p>
+
+<table border=1>
+	<thead>
+		<tr> 
+			<th> &nbsp; </th>
+			
+		</tr>
+	</thead>
+</table>
+</center>
+
+<!--==========================================================================
+	Chromosome variants table
+	========================================================================== -->
+
+<hr> 
+<a name="chrChanges">
+<center>
+<b> Variants by chromosome</b><p> 
+
+<center>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+AE013599.5&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		AE013599.5, Position,0,1
+AE013599.5,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+AE014134.6&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		AE014134.6, Position,0,1
+AE014134.6,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+AE014135.4&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		AE014135.4, Position,0,1
+AE014135.4,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+AE014296.5&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		AE014296.5, Position,0,1
+AE014296.5,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+AE014297.3&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		AE014297.3, Position,0,1
+AE014297.3,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+AE014298.5&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		AE014298.5, Position,0,1
+AE014298.5,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007074.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007074.1, Position,0,1
+CP007074.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007075.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007075.1, Position,0,1
+CP007075.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007077.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007077.1, Position,0,1
+CP007077.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007078.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007078.1, Position,0,1
+CP007078.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007079.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007079.1, Position,0,1
+CP007079.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007081.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007081.1, Position,0,1
+CP007081.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007084.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007084.1, Position,0,1
+CP007084.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007085.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007085.1, Position,0,1
+CP007085.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007086.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007086.1, Position,0,1
+CP007086.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007087.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007087.1, Position,0,1
+CP007087.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007089.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007089.1, Position,0,1
+CP007089.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007091.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007091.1, Position,0,1
+CP007091.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007103.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007103.1, Position,0,1
+CP007103.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007104.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007104.1, Position,0,1
+CP007104.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007106.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007106.1, Position,0,1
+CP007106.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007108.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007108.1, Position,0,1
+CP007108.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007111.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007111.1, Position,0,1
+CP007111.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+CP007120.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		CP007120.1, Position,0,1
+CP007120.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483562.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483562.1, Position,0,1
+DS483562.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483629.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483629.1, Position,0,1
+DS483629.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483641.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483641.1, Position,0,1
+DS483641.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483646.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483646.1, Position,0,1
+DS483646.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483648.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483648.1, Position,0,1
+DS483648.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483655.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483655.1, Position,0,1
+DS483655.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483659.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483659.1, Position,0,1
+DS483659.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483660.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483660.1, Position,0,1
+DS483660.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483670.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483670.1, Position,0,1
+DS483670.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483675.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483675.1, Position,0,1
+DS483675.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483677.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483677.1, Position,0,1
+DS483677.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483681.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483681.1, Position,0,1
+DS483681.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483711.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483711.1, Position,0,1
+DS483711.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483724.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483724.1, Position,0,1
+DS483724.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483736.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483736.1, Position,0,1
+DS483736.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483746.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483746.1, Position,0,1
+DS483746.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483749.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483749.1, Position,0,1
+DS483749.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483751.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483751.1, Position,0,1
+DS483751.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483753.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483753.1, Position,0,1
+DS483753.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483758.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483758.1, Position,0,1
+DS483758.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483770.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483770.1, Position,0,1
+DS483770.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483773.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483773.1, Position,0,1
+DS483773.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483776.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483776.1, Position,0,1
+DS483776.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483781.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483781.1, Position,0,1
+DS483781.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483783.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483783.1, Position,0,1
+DS483783.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483784.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483784.1, Position,0,1
+DS483784.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483789.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483789.1, Position,0,1
+DS483789.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483803.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483803.1, Position,0,1
+DS483803.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483808.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483808.1, Position,0,1
+DS483808.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483809.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483809.1, Position,0,1
+DS483809.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483817.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483817.1, Position,0,1
+DS483817.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483818.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483818.1, Position,0,1
+DS483818.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483819.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483819.1, Position,0,1
+DS483819.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483833.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483833.1, Position,0,1
+DS483833.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483843.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483843.1, Position,0,1
+DS483843.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483845.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483845.1, Position,0,1
+DS483845.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483851.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483851.1, Position,0,1
+DS483851.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483853.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483853.1, Position,0,1
+DS483853.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483854.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483854.1, Position,0,1
+DS483854.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483866.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483866.1, Position,0,1
+DS483866.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483870.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483870.1, Position,0,1
+DS483870.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483880.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483880.1, Position,0,1
+DS483880.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483885.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483885.1, Position,0,1
+DS483885.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483892.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483892.1, Position,0,1
+DS483892.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483893.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483893.1, Position,0,1
+DS483893.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483897.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483897.1, Position,0,1
+DS483897.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483903.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483903.1, Position,0,1
+DS483903.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483905.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483905.1, Position,0,1
+DS483905.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483906.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483906.1, Position,0,1
+DS483906.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483907.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483907.1, Position,0,1
+DS483907.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483908.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483908.1, Position,0,1
+DS483908.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483918.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483918.1, Position,0,1
+DS483918.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483920.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483920.1, Position,0,1
+DS483920.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483927.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483927.1, Position,0,1
+DS483927.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483928.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483928.1, Position,0,1
+DS483928.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483940.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483940.1, Position,0,1
+DS483940.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483944.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483944.1, Position,0,1
+DS483944.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483951.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483951.1, Position,0,1
+DS483951.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483954.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483954.1, Position,0,1
+DS483954.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483956.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483956.1, Position,0,1
+DS483956.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483961.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483961.1, Position,0,1
+DS483961.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483970.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483970.1, Position,0,1
+DS483970.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483971.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483971.1, Position,0,1
+DS483971.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483974.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483974.1, Position,0,1
+DS483974.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483982.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483982.1, Position,0,1
+DS483982.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS483992.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS483992.1, Position,0,1
+DS483992.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484000.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484000.1, Position,0,1
+DS484000.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484002.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484002.1, Position,0,1
+DS484002.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484004.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484004.1, Position,0,1
+DS484004.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484022.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484022.1, Position,0,1
+DS484022.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484039.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484039.1, Position,0,1
+DS484039.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484041.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484041.1, Position,0,1
+DS484041.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484042.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484042.1, Position,0,1
+DS484042.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484046.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484046.1, Position,0,1
+DS484046.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484051.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484051.1, Position,0,1
+DS484051.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484057.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484057.1, Position,0,1
+DS484057.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484058.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484058.1, Position,0,1
+DS484058.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484060.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484060.1, Position,0,1
+DS484060.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484061.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484061.1, Position,0,1
+DS484061.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484064.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484064.1, Position,0,1
+DS484064.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484068.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484068.1, Position,0,1
+DS484068.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484069.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484069.1, Position,0,1
+DS484069.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484070.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484070.1, Position,0,1
+DS484070.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484084.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484084.1, Position,0,1
+DS484084.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484089.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484089.1, Position,0,1
+DS484089.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484099.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484099.1, Position,0,1
+DS484099.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484102.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484102.1, Position,0,1
+DS484102.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484116.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484116.1, Position,0,1
+DS484116.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484124.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484124.1, Position,0,1
+DS484124.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484125.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484125.1, Position,0,1
+DS484125.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484130.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484130.1, Position,0,1
+DS484130.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484131.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484131.1, Position,0,1
+DS484131.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484138.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484138.1, Position,0,1
+DS484138.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484140.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484140.1, Position,0,1
+DS484140.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484143.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484143.1, Position,0,1
+DS484143.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484148.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484148.1, Position,0,1
+DS484148.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484153.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484153.1, Position,0,1
+DS484153.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484159.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484159.1, Position,0,1
+DS484159.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484178.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484178.1, Position,0,1
+DS484178.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484180.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484180.1, Position,0,1
+DS484180.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484185.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484185.1, Position,0,1
+DS484185.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484187.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484187.1, Position,0,1
+DS484187.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484197.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484197.1, Position,0,1
+DS484197.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484198.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484198.1, Position,0,1
+DS484198.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484202.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484202.1, Position,0,1
+DS484202.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484203.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484203.1, Position,0,1
+DS484203.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484216.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484216.1, Position,0,1
+DS484216.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484219.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484219.1, Position,0,1
+DS484219.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484225.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484225.1, Position,0,1
+DS484225.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484235.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484235.1, Position,0,1
+DS484235.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484244.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484244.1, Position,0,1
+DS484244.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484246.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484246.1, Position,0,1
+DS484246.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484258.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484258.1, Position,0,1
+DS484258.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484260.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484260.1, Position,0,1
+DS484260.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484263.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484263.1, Position,0,1
+DS484263.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484268.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484268.1, Position,0,1
+DS484268.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484272.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484272.1, Position,0,1
+DS484272.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484276.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484276.1, Position,0,1
+DS484276.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484277.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484277.1, Position,0,1
+DS484277.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484278.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484278.1, Position,0,1
+DS484278.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484279.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484279.1, Position,0,1
+DS484279.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484280.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484280.1, Position,0,1
+DS484280.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484281.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484281.1, Position,0,1
+DS484281.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484282.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484282.1, Position,0,1
+DS484282.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484285.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484285.1, Position,0,1
+DS484285.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484289.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484289.1, Position,0,1
+DS484289.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484296.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484296.1, Position,0,1
+DS484296.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484297.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484297.1, Position,0,1
+DS484297.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484300.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484300.1, Position,0,1
+DS484300.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484316.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484316.1, Position,0,1
+DS484316.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484319.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484319.1, Position,0,1
+DS484319.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484322.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484322.1, Position,0,1
+DS484322.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484330.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484330.1, Position,0,1
+DS484330.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484343.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484343.1, Position,0,1
+DS484343.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484345.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484345.1, Position,0,1
+DS484345.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484346.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484346.1, Position,0,1
+DS484346.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484348.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484348.1, Position,0,1
+DS484348.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484354.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484354.1, Position,0,1
+DS484354.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484358.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484358.1, Position,0,1
+DS484358.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484361.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484361.1, Position,0,1
+DS484361.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484367.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484367.1, Position,0,1
+DS484367.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484369.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484369.1, Position,0,1
+DS484369.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484371.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484371.1, Position,0,1
+DS484371.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484377.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484377.1, Position,0,1
+DS484377.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484382.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484382.1, Position,0,1
+DS484382.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484383.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484383.1, Position,0,1
+DS484383.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484387.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484387.1, Position,0,1
+DS484387.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484388.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484388.1, Position,0,1
+DS484388.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484393.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484393.1, Position,0,1
+DS484393.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484394.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484394.1, Position,0,1
+DS484394.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484396.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484396.1, Position,0,1
+DS484396.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484417.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484417.1, Position,0,1
+DS484417.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484419.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484419.1, Position,0,1
+DS484419.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484429.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484429.1, Position,0,1
+DS484429.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484431.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484431.1, Position,0,1
+DS484431.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484447.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484447.1, Position,0,1
+DS484447.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484450.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484450.1, Position,0,1
+DS484450.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484454.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484454.1, Position,0,1
+DS484454.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484462.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484462.1, Position,0,1
+DS484462.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484469.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484469.1, Position,0,1
+DS484469.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484472.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484472.1, Position,0,1
+DS484472.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484486.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484486.1, Position,0,1
+DS484486.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484507.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484507.1, Position,0,1
+DS484507.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484526.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484526.1, Position,0,1
+DS484526.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484528.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484528.1, Position,0,1
+DS484528.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484533.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484533.1, Position,0,1
+DS484533.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484552.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484552.1, Position,0,1
+DS484552.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484556.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484556.1, Position,0,1
+DS484556.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484563.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484563.1, Position,0,1
+DS484563.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484566.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484566.1, Position,0,1
+DS484566.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484568.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484568.1, Position,0,1
+DS484568.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484578.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484578.1, Position,0,1
+DS484578.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484588.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484588.1, Position,0,1
+DS484588.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484593.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484593.1, Position,0,1
+DS484593.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484594.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484594.1, Position,0,1
+DS484594.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484600.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484600.1, Position,0,1
+DS484600.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484601.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484601.1, Position,0,1
+DS484601.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484608.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484608.1, Position,0,1
+DS484608.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484609.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484609.1, Position,0,1
+DS484609.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484610.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484610.1, Position,0,1
+DS484610.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484611.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484611.1, Position,0,1
+DS484611.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484614.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484614.1, Position,0,1
+DS484614.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484632.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484632.1, Position,0,1
+DS484632.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484644.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484644.1, Position,0,1
+DS484644.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484646.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484646.1, Position,0,1
+DS484646.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484672.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484672.1, Position,0,1
+DS484672.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484673.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484673.1, Position,0,1
+DS484673.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484697.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484697.1, Position,0,1
+DS484697.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484702.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484702.1, Position,0,1
+DS484702.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484718.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484718.1, Position,0,1
+DS484718.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484719.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484719.1, Position,0,1
+DS484719.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484722.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484722.1, Position,0,1
+DS484722.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484724.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484724.1, Position,0,1
+DS484724.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484725.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484725.1, Position,0,1
+DS484725.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484737.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484737.1, Position,0,1
+DS484737.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484739.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484739.1, Position,0,1
+DS484739.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484748.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484748.1, Position,0,1
+DS484748.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484751.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484751.1, Position,0,1
+DS484751.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484765.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484765.1, Position,0,1
+DS484765.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484768.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484768.1, Position,0,1
+DS484768.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484777.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484777.1, Position,0,1
+DS484777.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484779.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484779.1, Position,0,1
+DS484779.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484787.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484787.1, Position,0,1
+DS484787.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484789.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484789.1, Position,0,1
+DS484789.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484803.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484803.1, Position,0,1
+DS484803.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484817.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484817.1, Position,0,1
+DS484817.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484857.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484857.1, Position,0,1
+DS484857.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484869.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484869.1, Position,0,1
+DS484869.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484904.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484904.1, Position,0,1
+DS484904.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484907.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484907.1, Position,0,1
+DS484907.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484913.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484913.1, Position,0,1
+DS484913.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484948.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484948.1, Position,0,1
+DS484948.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484963.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484963.1, Position,0,1
+DS484963.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484970.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484970.1, Position,0,1
+DS484970.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484978.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484978.1, Position,0,1
+DS484978.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484982.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484982.1, Position,0,1
+DS484982.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS484990.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS484990.1, Position,0,1
+DS484990.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485010.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485010.1, Position,0,1
+DS485010.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485015.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485015.1, Position,0,1
+DS485015.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485017.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485017.1, Position,0,1
+DS485017.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485025.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485025.1, Position,0,1
+DS485025.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485031.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485031.1, Position,0,1
+DS485031.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485044.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485044.1, Position,0,1
+DS485044.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485050.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485050.1, Position,0,1
+DS485050.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485054.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485054.1, Position,0,1
+DS485054.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485056.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485056.1, Position,0,1
+DS485056.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485064.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485064.1, Position,0,1
+DS485064.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485077.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485077.1, Position,0,1
+DS485077.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485119.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485119.1, Position,0,1
+DS485119.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485141.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485141.1, Position,0,1
+DS485141.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485148.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485148.1, Position,0,1
+DS485148.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485172.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485172.1, Position,0,1
+DS485172.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485176.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485176.1, Position,0,1
+DS485176.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485255.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485255.1, Position,0,1
+DS485255.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485260.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485260.1, Position,0,1
+DS485260.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485262.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485262.1, Position,0,1
+DS485262.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485266.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485266.1, Position,0,1
+DS485266.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485268.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485268.1, Position,0,1
+DS485268.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485278.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485278.1, Position,0,1
+DS485278.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485281.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485281.1, Position,0,1
+DS485281.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485299.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485299.1, Position,0,1
+DS485299.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485303.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485303.1, Position,0,1
+DS485303.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485310.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485310.1, Position,0,1
+DS485310.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485331.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485331.1, Position,0,1
+DS485331.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485345.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485345.1, Position,0,1
+DS485345.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485360.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485360.1, Position,0,1
+DS485360.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485371.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485371.1, Position,0,1
+DS485371.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485384.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485384.1, Position,0,1
+DS485384.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485411.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485411.1, Position,0,1
+DS485411.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485422.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485422.1, Position,0,1
+DS485422.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485454.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485454.1, Position,0,1
+DS485454.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485464.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485464.1, Position,0,1
+DS485464.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485465.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485465.1, Position,0,1
+DS485465.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485476.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485476.1, Position,0,1
+DS485476.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485504.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485504.1, Position,0,1
+DS485504.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485509.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485509.1, Position,0,1
+DS485509.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485528.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485528.1, Position,0,1
+DS485528.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485535.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485535.1, Position,0,1
+DS485535.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485543.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485543.1, Position,0,1
+DS485543.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485549.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485549.1, Position,0,1
+DS485549.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485592.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485592.1, Position,0,1
+DS485592.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485597.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485597.1, Position,0,1
+DS485597.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485606.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485606.1, Position,0,1
+DS485606.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485647.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485647.1, Position,0,1
+DS485647.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485651.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485651.1, Position,0,1
+DS485651.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485656.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485656.1, Position,0,1
+DS485656.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485664.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485664.1, Position,0,1
+DS485664.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485703.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485703.1, Position,0,1
+DS485703.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485707.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485707.1, Position,0,1
+DS485707.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485753.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485753.1, Position,0,1
+DS485753.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485757.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485757.1, Position,0,1
+DS485757.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485771.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485771.1, Position,0,1
+DS485771.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485773.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485773.1, Position,0,1
+DS485773.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485775.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485775.1, Position,0,1
+DS485775.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485801.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485801.1, Position,0,1
+DS485801.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485876.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485876.1, Position,0,1
+DS485876.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485879.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485879.1, Position,0,1
+DS485879.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485887.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485887.1, Position,0,1
+DS485887.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485933.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485933.1, Position,0,1
+DS485933.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485940.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485940.1, Position,0,1
+DS485940.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485941.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485941.1, Position,0,1
+DS485941.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485952.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485952.1, Position,0,1
+DS485952.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485962.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485962.1, Position,0,1
+DS485962.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485968.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485968.1, Position,0,1
+DS485968.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS485981.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS485981.1, Position,0,1
+DS485981.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+DS486004.1&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		DS486004.1, Position,0,1
+DS486004.1,Count,0,0
+
+	</pre>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chd=e:AAAA&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Variants+histogram%3A+KJ947872.2&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F1b|2:|0|1|3:|Position"><br>
+		KJ947872.2, Position,0,1
+KJ947872.2,Count,0,0
+
+	</pre>
+</center>
+
+<!--==========================================================================
+	Variants by gene 
+	========================================================================== -->
+
+<center>
+	<hr>
+	<b> Details by gene </b><p>
+	<p>
+	<b><a href="snpEff_genes.txt">Here</a></b> you can find a tab-separated table.
+</center>
+</div>
+</center>
