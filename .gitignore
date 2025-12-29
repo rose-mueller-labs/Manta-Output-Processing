@@ -3,5 +3,7 @@ MantaTestOutput
 smallIndels_annotated.vcf
 snpEff_latest_core.zip
 ncbi_dataset
-ncbi_dataset_1
+.*
 candidateSmallIndels_renamed.vcf
+*.log
+bdgp6.28.99.txt
