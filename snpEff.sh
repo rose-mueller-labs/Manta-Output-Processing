@@ -10,10 +10,10 @@ SNPEFF_JAR="$SNPEFF_DIR/snpEff.jar"
 CONFIG_FILE="$SNPEFF_DIR/snpEff.config"
 
 # I/O
-OUTPUTNAME="output2" # output2
+OUTPUTNAME="output_P01P02" # output2 # output_P01P02 # output
 FILENAME="candidateSV" # candidateSV # DiploidSV # candidateSmallIndels
 VCF_FILE="/Volumes/Crucial X9/Manta-Output-Processing/MantaTestOutput/${OUTPUTNAME}/results/variants/${FILENAME}.vcf"
-OUTPUT_FILE="./OUTPUTS/${OUTPUTNAME}_${FILENAME}_annotated.vcf"
+OUTPUT_FILE="./OUTPUT_VCFS/${OUTPUTNAME}_${FILENAME}_annotated.vcf"
 HTML_REPORT="./OUTPUT_HTMLS/${OUTPUTNAME}_${FILENAME}_annotation_summary.html"
 
 

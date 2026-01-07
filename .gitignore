@@ -7,3 +7,7 @@ ncbi_dataset
 candidateSmallIndels_renamed.vcf
 *.log
 bdgp6.28.99.txt
+output_P01P02
+OUTPUT_1_2_RESULTS
+OUTPUT_28_56_HTMLS
+OUTPUT_28_56_VCFSOUTPUT_VCFS/*.vcf
