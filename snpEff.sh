@@ -10,11 +10,11 @@ SNPEFF_JAR="$SNPEFF_DIR/snpEff.jar"
 CONFIG_FILE="$SNPEFF_DIR/snpEff.config"
 
 # I/O
-OUTPUTNAME="output_P01toP99" # output2 # output_P01P02 # output
+OUTPUTNAME="P03P04" # output2 # output_P01P02 # output
 FILENAME="candidateSmallIndels" # candidateSV # DiploidSV # candidateSmallIndels
 VCF_FILE="/Volumes/Crucial X9/Manta-Output-Processing/MantaTestOutput/${OUTPUTNAME}/results/variants/${FILENAME}.vcf"
-OUTPUT_FILE="./OUTPUT_1_to_100_RESULTS/${OUTPUTNAME}_${FILENAME}_annotated.vcf"
-HTML_REPORT="./OUTPUT_1_to_100_RESULTS/${OUTPUTNAME}_${FILENAME}_annotation_summary.html"
+OUTPUT_FILE="./OUTPUT_3_4_RESULTS/${OUTPUTNAME}_${FILENAME}_annotated.vcf"
+HTML_REPORT="./OUTPUT_3_4_RESULTS/${OUTPUTNAME}_${FILENAME}_annotation_summary.html"
 
 
 # CORRECT GenBank paths (GCA_ not GCF_)
